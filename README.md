@@ -13,3 +13,4 @@ All the avatars are taken from real users, for this example we used [unavatar](h
 Styles are based on the Twitter color pallete
 
 Fell free to suggest changes or make your pull request
+
