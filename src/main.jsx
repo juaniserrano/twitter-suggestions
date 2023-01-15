@@ -5,4 +5,11 @@ import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(<App />);
+root.render(
+  <>
+    <App />
+    <footer>
+      <p>This is a twitter clone made by Juan Serrano</p>
+    </footer>
+  </>
+);
