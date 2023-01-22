@@ -5,12 +5,12 @@ import { useState } from 'react';
 export default App;
 
 export function App() {
-  const [user, setUser] = useState([
+  const [users, setUser] = useState([
     {
       first_name: 'Juan',
       last_name: 'Serrano',
       username: 'juaniserrano',
-      isFollowing: true,
+      initalIsFollowing: true,
     },
     {
       first_name: 'Linus',
@@ -31,17 +31,27 @@ export function App() {
       .then((response) => response.json())
       .then((data) => setUser(data))
       .catch((error) => console.error(error));
-    console.log(user);
+    console.log(users);
   }
   return (
     <section className="App">
       <h1>Who to follow</h1>
-      <TwitterFollowCard isFollowing userName={user[0].username} name={`${user[0].first_name} ${user[0].last_name}`} />
-      <TwitterFollowCard isFollowing={false} userName={user[1].username} isVerified={user[1].verified} name={`${user[1].first_name} ${user[1].last_name}`} />
-      <TwitterFollowCard isFollowing={false} userName={user[2].username} isVerified={user[2].verified} name={`${user[2].first_name} ${user[2].last_name}`} />
-      {user[3] && <TwitterFollowCard isFollowing={false} userName={user[3].username} name={`${user[3].first_name} ${user[3].last_name}`} />}
-      {user[4] && <TwitterFollowCard isFollowing={false} userName={user[4].username} name={`${user[4].first_name} ${user[4].last_name}`} />}
-      {user[5] && <TwitterFollowCard isFollowing={false} userName={user[5].username} name={`${user[5].first_name} ${user[5].last_name}`} />}
+      {
+        users.map(user => {
+          const {username, first_name, last_name} = user
+
+          return (
+            <TwitterFollowCard userName={username} initalIsFollowing={false} name = {`${first_name} ${last_name}`}></TwitterFollowCard>
+          )
+        })
+      }
+
+      {/* <TwitterFollowCard initalIsFollowing={false} userName={users[0].username} name={`${users[0].first_name} ${users[0].last_name}`} />
+      <TwitterFollowCard initalIsFollowing={false} userName={users[1].username} isVerified={users[1].verified} name={`${users[1].first_name} ${users[1].last_name}`} />
+      <TwitterFollowCard initalIsFollowing={false} userName={users[2].username} isVerified={users[2].verified} name={`${users[2].first_name} ${users[2].last_name}`} />
+      {users[3] && <TwitterFollowCard initalIsFollowing={false} userName={users[3].username} name={`${users[3].first_name} ${users[3].last_name}`} />}
+      {users[4] && <TwitterFollowCard initalIsFollowing={false} userName={user[4].username} name={`${user[4].first_name} ${user[4].last_name}`} />}
+      {user[5] && <TwitterFollowCard initalIsFollowing={false} userName={user[5].username} name={`${user[5].first_name} ${user[5].last_name}`} />} */}
       <button className="tw-buttonShowMore" onClick={getRandomUsername}>
         Show more
       </button>

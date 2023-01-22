@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import verifiedLogo from './assets/verified.svg';
 
-export function TwitterFollowCard({ userName = 'unknown', name, isVerified = false, isFollowingBack }) {
-  const [isFollowing, setIsFollowing] = useState(false);
+export function TwitterFollowCard({ userName, name, isVerified = false, isFollowingBack, initalIsFollowing}) {
+  const [isFollowing, setIsFollowing] = useState(initalIsFollowing);
   const textFollow = isFollowing ? 'Following' : 'Follow';
-  //TODO: make a component that handdle the entire button: should have onMouseEnter and onMouseLeave when isFollowing
   const handleClick = () => {
     setIsFollowing(!isFollowing);
   };
@@ -26,7 +25,8 @@ export function TwitterFollowCard({ userName = 'unknown', name, isVerified = fal
 
       <aside>
         <button className={buttonClassName} onClick={handleClick}>
-          {textFollow}
+          <span className='tw-followCard-text'>{textFollow}</span>
+          <span className='tw-followCard-stopFollow'>Unfollow</span>
         </button>
       </aside>
     </article>
