@@ -12,5 +12,4 @@ The cards are using the rich sintax of jsx in order to take the most advantage
 All the avatars are taken from real users, for this example we used [unavatar](https://unavatar.io/), check the website for more information
 Styles are based on the Twitter color pallete
 
-Fell free to suggest changes or make your pull request
-
+Fell free to suggest changes or make your pull request 😀
